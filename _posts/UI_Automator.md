@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using the Windows UI Automation in automated tests for Windows desktop applications
+permalink: /posts/UIAutomation
 ---
 # Using the Windows UI Automation in automated tests for Windows desktop applications  
 
