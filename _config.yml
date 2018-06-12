@@ -1,6 +1,18 @@
 remote_theme: "mmistakes/minimal-mistakes"
 title: Christopher Bowcutt's Blog
-_drafts: UIAutomation draft.md
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
 author:
   name             : "Christopher Bowcutt"
