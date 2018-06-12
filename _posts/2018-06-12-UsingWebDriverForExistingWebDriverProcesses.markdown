@@ -1,5 +1,6 @@
 ---
 title: Using the Selenium WebDriver to drive existing Chrome processes
+date: 2018-06-12
 ---
 When I write automated tests for web applications with the Selenium WebDriver, the browser might either be in a desktop Chrome session, or embedded in a desktop application using Cefsharp.
 
