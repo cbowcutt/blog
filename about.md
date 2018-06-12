@@ -1,8 +1,8 @@
 ---
 title: About
 permalink: /about/
+layout: default
 ---
-![image-right]({{ site.url }}{{ site.baseurl }}/assets/images/avatar_sbarro.jpg){: .align-right}
 
 My name is Christopher Bowcutt. I work as a Software Engineer in Test for Larson Davis, an electronics company that designs 
 and manufactures acoustic and vibration measurement systems. My role is the development of automated test systems for web applications
