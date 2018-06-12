@@ -1,7 +1,7 @@
 ---
 title: About
 permalink: /about/
-layout: default
+layout: single
 ---
 
 My name is Christopher Bowcutt. I work as a Software Engineer in Test for Larson Davis, an electronics company that designs 
