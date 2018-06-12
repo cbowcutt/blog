@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+remote_theme: "mmistakes/minimal-mistakes"
 title: Christopher Bowcutt's Blog
 _drafts: UIAutomation draft.md
 
