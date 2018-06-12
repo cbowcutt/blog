@@ -1,6 +1,6 @@
 ---
 title: About
-permalink /about/
+permalink: /about/
 ---
 
 My name is Christopher Bowcutt. I work as a Software Engineer in Test for Larson Davis, an electronics company that designs 
