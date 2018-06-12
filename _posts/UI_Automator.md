@@ -1,6 +1,8 @@
 ---
 layout: post
-title: UIAutomation
+title: "Using Windows UI Automation"
+date: 2018-06-12
+categories: automation
 ---
 # Using the Windows UI Automation in automated tests for Windows desktop applications  
 
