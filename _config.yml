@@ -1,3 +1,7 @@
 theme: jekyll-theme-minimal
 title: Christopher Bowcutt's Blog
 _drafts: UIAutomation draft.md
+
+author:
+  name             : "Christopher Bowcutt"
+  avatar           : "/assets/images/avatar_sbarro.jpg"
