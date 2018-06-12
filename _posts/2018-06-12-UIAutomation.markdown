@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Using Windows UI Automation"
 date: 2018-06-12
 categories: automation
