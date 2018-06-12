@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Using the C# HTTPClient to POST a binary file to a server
 date: 2018-06-12
 category: automation
