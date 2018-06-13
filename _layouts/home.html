@@ -5,9 +5,7 @@ layout: default
   {% include sidebar.html %}
   <ul>
   {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
+    {% include archive-single.html %}
   {% endfor %}
 </ul>
 
