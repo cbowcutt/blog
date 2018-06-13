@@ -3,4 +3,6 @@ layout: single
 title: Posts
 permalink: /posts/
 ---
-{%include posts.html %}
+{% for post in site.posts %}
+  {%include archive-single.html %}
+{% endfor %}
