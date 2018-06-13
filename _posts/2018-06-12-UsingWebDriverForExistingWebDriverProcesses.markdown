@@ -19,7 +19,7 @@ IWebDriver driver = new ChromeDriver(chromeDriverPath);
 
 
 
-In my work experience, I have had to run automated tests inside a CefSharp browser embedded inside a desktop applications. This means that I had to make it so that the WebDriver instance used an already running browser process instead of creating a new one. In order to do this, the ChromeDriver constructor can be overridden by passing in a ChromeOptions object as an argument. 
+In my work experience, I have had to run automated tests inside a CefSharp browser embedded inside a desktop applications. This means that I had to make it so that the WebDriver instance used an already running browser process instead of creating a new one. In order to do this, the ChromeDriver constructor can be overloaded by passing in a ChromeOptions object as an argument. 
 
 A ChromeDriver object can connect to an existing chrome process by setting the BinaryLocation and DebuggerAddress properties on the ChromeOptions object used by the ChromeDriver. BinaryLocation is a string specifies the location of the executable associated with the running browser process. DebuggerAddress is a string specifies the address of the Chrome debugger server to connect to.
 
