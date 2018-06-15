@@ -51,7 +51,8 @@ public class DesktopElement : IUIElement<AutomationElement>
 
 	public void Input(string text)
 	{
-		ValuePattern pattern = element.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
+		ValuePattern pattern =
+			element.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
 		pattern.SetValue(text);
 	}
 
@@ -62,13 +63,13 @@ public class DesktopElement : IUIElement<AutomationElement>
 
 	public void Click()
 	{
-		InvokePattern pattern = element.GetCurrentPattern(InvokePattern.Pattern)						as InvokePattern;
+		InvokePattern pattern =element.GetCurrentPattern(InvokePattern.Pattern)	as InvokePattern;
 		pattern.Invoke();
 	}
 
 	public void Select()
 	{
-		SelectionItemPattern pattern = element.GetCurrentPattern(SelectionItemPattern.Pattern) 				as SelectionItemPattern;
+		SelectionItemPattern pattern = element.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
 		pattern.Select();
 	}
 ```
@@ -184,7 +185,7 @@ public class DesktopPage : IPage<DesktopElement>
 		PageElementID id = this.LabelToID[label];
 		if (id.Type.Equals("AutomationID"))
 		{
-			return new 		DesktopElement(this.UIMap.SearchForControlById(id.Value).Result);
+			return new DesktopElement(this.UIMap.SearchForControlById(id.Value).Result);
 		}
 		else if (id.Type.Equals("Name"))
 		{
