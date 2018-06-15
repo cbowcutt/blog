@@ -59,7 +59,7 @@ public class DesktopElement : IUIElement<AutomationElement>
 	public string Text()
 	{
 		return null as string;
-     }	
+     	}	
 
 	public void Click()
 	{
