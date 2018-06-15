@@ -96,7 +96,7 @@ public class WebElement : IUIElement<IWebElement>
 	
 	public IWebElement GetElement()
 	{
-	return this.element;
+		return this.element;
 	}
 
 	public string Text()
@@ -105,16 +105,16 @@ public class WebElement : IUIElement<IWebElement>
 	}
 	
 	public void Click()
-    {
-    	this.element.Click();
-    }
+	{
+		this.element.Click();
+	}
 
-    public void Input(string text)
-    {
-        this.element.Click();
-        this.element.Clear();
-        this.element.SendKeys(text);
-    }
+	public void Input(string text)
+	{
+		this.element.Click();
+		this.element.Clear();
+		this.element.SendKeys(text);
+	}
 }
 ```
 
