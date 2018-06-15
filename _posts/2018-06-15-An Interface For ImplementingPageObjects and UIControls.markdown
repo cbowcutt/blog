@@ -1,7 +1,7 @@
 ---
 title: "An Interface For PageObjects and UI Controls"
 date: 2018-06-15
-category: automation
+categories: automation
 ---
 In my work I have had to deal with automated tests that switch back and forth from interacting from Windows desktop programs and web applications in the browser. When the tests were using desktop programs, the used the .Net UI Automator framework to access UI controls. When the tests were useing web applications, they accessed controls using the Selenium WebDriver. This made me realise that PageObject classes should not depend on the way that UI controls are accessed. I wanted a PageObject class that could encapsulate both dekstop application and web application UIs. To do this, I created two interfaces, IPage<IUIElement> and IUIElement<T>.
 
