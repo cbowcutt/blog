@@ -63,7 +63,7 @@ public class DesktopElement : IUIElement<AutomationElement>
 
 	public void Click()
 	{
-		InvokePattern pattern =element.GetCurrentPattern(InvokePattern.Pattern)	as InvokePattern;
+		InvokePattern pattern = element.GetCurrentPattern(InvokePattern.Pattern)	as InvokePattern;
 		pattern.Invoke();
 	}
 
