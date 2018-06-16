@@ -36,7 +36,6 @@ All UI Controls on the desktop can be can be accessed by calling the FindAll() o
 The first parameter is a TreeScope object. This defines the scope where the method will search for AutomationElements. TreeScope.Children can be passed in as the first argument to FindAll() to search all child elements adjacent the the instance of AutomationElement on which the method is called. TreeScope.Descendants can be passed in as the first argument to FindAll() to search all child elements that are reachable from the instance of AutomationElement on which the method is called.
 
 
-
 ```c#
 using System.Windows.Automation;
 AutomationElement rootElement = AutomationElement.RootElement;
@@ -53,21 +52,38 @@ Condition.True);
 
 The second parameter is of the type System.Windows.Automation.Condition. This parameter specifies the criteria that a UI Control within the specified scope must meet in order to be returned.
 
-The PropertyCondition class is a useful subclass of the Condition class that can be used to specify the value that a UI Control's property must have in order to returned.
+The PropertyCondition class is a useful subclass of the Condition class that can be used to specify the value that a UI Control's property must have in order to returned. The constructor for instantiating a PropertyCondition objects takes in an AutomationProperty object and an object named Value. 
 
+For example, if there is a UI Control whose Name property is "OK", we can create a PropertyCondition and then use it as the second argumeent in FindFirst() like this:
 
+```c#
+using SystemWindows.Automation;
+
+Condition nameIsOKCondition = new PropertyCondition(AutomationElement.NameProperty, "OK" as object);
+AutomationElement elementOK = AutomationElement.RootElement.FindFirst(TreeScope.Children, nameIsOKCondition);
+```
+
+This next example will assign to allInvokableControls a collection of all UI controls where the InvokePattern is available. InvokePattern is a subclass of ControlPattern that "Represents controls that initiate or perform a single, unambiguous action and do not maintain state when activated." These are mainly used to represent buttons.
 
 ```c#
 using System.Windows.Automation;
 
 PropertyCondition propertyCondition = new PropertyCondition(AutomationElement.IsInvokePatternEnabledPorperty, true);
-AutomationElementCollection allInvokableControls = rootElement.FindAll(TreeScope.Descendants, propertyCondition);
+AutomationElementCollection allInvokableControls = rootElement.FindAll(TreeScope.Children, propertyCondition);
 ```
 
 
+#### Making the search for UI Controls much more efficient
 
-The code above will assign to allInvokableControls a collection of all UI controls where the InvokePattern is available. InvokePattern is a subclass of ControlPattern that "Represents controls that initiate or perform a single, unambiguous action and do not maintain state when activated." These are mainly used to represent buttons.
+The Automation Tree can contain thousands of elements, depending on how many desktop windows and applications are open. If the scope of the search gets too big, FindFirst() and FindAll() can cause a stack overflow. Fortunately, the Automation Tree provides three default views that can greatly filter the elements in the Automation Tree so that it only contains UI Controls. When it comes to UI automation, we are only concerned with these controls. These elements will have their IsControlElement property set to true. 
 
+#### TreeViewWalker
+
+The TreeViewWalker class provides methods to navigate the Automation Tree. It is not as efficient as using AutomationElement.FindAll() or AutomationElement.FindFirst(), the TreeViewWalker methods can result in creating cross-process calls, but it does provide ways to filter the Automation Tree so that only UI Controls are encountered. 
+
+#### TreeViewWalker.ControlViewWalker
+
+TreeViewWalker is a static class that contains field named ControlViewWalker. ControlViewWalker is a predefined TreeWalker that contains only control elements on a UI, starting from a particular element.
 
 
 ## Using ControlPattern to interact with UIControls
