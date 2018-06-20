@@ -20,3 +20,7 @@ author:
   avatar           : "/assets/images/avatar_sbarro.jpg"
   github           : "cbowcutt"
   linkedin         : "christopher-bowcutt-4b691887"
+  
+  
+sass:
+  sass_dir: _sass
