@@ -6,4 +6,15 @@
     <h3 class= "author__name" itemprop="name">Christopher Bowcutt</h3>
     <p class= "author__bio" itemprop="description">Software Engineer In Test</p>
   </div>
+  <div class="author__urls-wrapper">
+    <ul class="author__urls social-icons">
+        {% if author.github %}
+        <li>
+          <a href="https://github.com/{{ author.github }}" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+       {% endif %}
+    </ul>
+  </div>
 </div>
