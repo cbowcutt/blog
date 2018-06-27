@@ -1,5 +1,5 @@
 ---
-title: "An Interface For PageObjects and UI Controls Part 1"
+title: "Advantages of Using a Wrapper Class for PageElements"
 date: 2018-06-15
 categories: automation
 ---
