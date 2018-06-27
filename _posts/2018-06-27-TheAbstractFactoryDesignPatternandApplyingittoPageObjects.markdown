@@ -1,8 +1,8 @@
-```
+---
 title: The Abstract Factory Design Pattern and Applying it to Page Objects
 date: 06-27-2018
 category: automation
-```
+---
 
 Sometimes we want to create Page Objects for web applications or desktop applications. Both of these applications are essentially 
 interacted with in the same way; Buttons are clicked on, text is read and entered, pictures are displayed, and so on. However, when
