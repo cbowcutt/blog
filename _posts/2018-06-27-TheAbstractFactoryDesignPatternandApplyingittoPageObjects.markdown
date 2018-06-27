@@ -1,6 +1,6 @@
 ---
 title: The Abstract Factory Design Pattern and Applying it to Page Objects
-date: 06-27-2018
+date: 2018-06-27
 category: automation
 ---
 
