@@ -23,31 +23,31 @@ construction of the pages uniform.
 Here is what the abstract PageObjectFactory and the abstract PageObject class will look like.
 
 ```c#
-	public abstract class PageFactory
-	{
-		public abstract Page MakePage();
-		public abstract IInvokable CreateInvokable(IPageElementID PageElementID);
-		public abstract ISelectable CreateSelectable(IPageElementID PageElementID);
-		public abstract IReadable CreateReadable(IPageElementID PageElementID);
-		public abstract IInputable CreateInputable(IPageElementID PageElementID);
-		public abstract IExpandable CreateExpandable(IPageElementID PageElementID);
-	}
+public abstract class PageFactory
+{
+	public abstract Page MakePage();
+	public abstract IInvokable CreateInvokable(IPageElementID PageElementID);
+	public abstract ISelectable CreateSelectable(IPageElementID PageElementID);
+	public abstract IReadable CreateReadable(IPageElementID PageElementID);
+	public abstract IInputable CreateInputable(IPageElementID PageElementID);
+	public abstract IExpandable CreateExpandable(IPageElementID PageElementID);
+}
   
   
-  public abstract class Page
-	{
-		public Dictionary<string, IInvokable> Invokables;
-		public Dictionary<string, ISelectable> Selectables;
-		public Dictionary<string, IReadable> Readables;
-		public Dictionary<string, IInputable> Inputables;
-		public Dictionary<string, IExpandable> Expandables;
+public abstract class Page
+{
+	public Dictionary<string, IInvokable> Invokables;
+	public Dictionary<string, ISelectable> Selectables;
+	public Dictionary<string, IReadable> Readables;
+	public Dictionary<string, IInputable> Inputables;
+	public Dictionary<string, IExpandable> Expandables;
 
-		public abstract IInvokable Invokable(string stringID);
-		public abstract ISelectable Selectable(string stringID);
-		public abstract IReadable Readable(string stringID);
-		public abstract IInputable Inputable(string stringID);
-		public abstract IExpandable Expandable(string stringID);
-	}
+	public abstract IInvokable Invokable(string stringID);
+	public abstract ISelectable Selectable(string stringID);
+	public abstract IReadable Readable(string stringID);
+	public abstract IInputable Inputable(string stringID);
+	public abstract IExpandable Expandable(string stringID);
+}
 ```
 
 
@@ -67,201 +67,201 @@ Here is the implementation of HTMLPage and HTMLPageFactory.
 
 
 ```c#
-	public class HTMLPage : Page
+public class HTMLPage : Page
+{
+	public IWebDriver Driver;
+
+	public HTMLPage(IWebDriver driver)
 	{
-		public IWebDriver Driver;
-
-		public HTMLPage(IWebDriver driver)
-		{
-			this.Driver = driver;
-			this.Invokables = new Dictionary<string, IInvokable>();
-			this.Selectables = new Dictionary<string, ISelectable>();
-			this.Readables = new Dictionary<string, IReadable>();
-			this.Inputables = new Dictionary<string, IInputable>();
-			this.JavaScriptPageElements = new Dictionary<string, JavaScriptPageElement<object>>();
-		}
-
-		public override ISelectable Selectable(string stringID)
-		{
-			return this.Selectables[stringID];
-		}
-
-		public override IInvokable Invokable(string stringID)
-		{
-			return this.Invokables[stringID];
-		}
-
-		public override IInputable Inputable(string stringID)
-		{
-			return this.Inputables[stringID];
-		}
-
-		public override IReadable Readable(string stringID)
-		{
-			return this.Readables[stringID];
-		}
-		public override IExpandable Expandable(string stringID)
-		{
-			return this.Expandables[stringID];
-		}
-
+		this.Driver = driver;
+		this.Invokables = new Dictionary<string, IInvokable>();
+		this.Selectables = new Dictionary<string, ISelectable>();
+		this.Readables = new Dictionary<string, IReadable>();
+		this.Inputables = new Dictionary<string, IInputable>();
+		this.JavaScriptPageElements = new Dictionary<string, JavaScriptPageElement<object>>();
 	}
+
+	public override ISelectable Selectable(string stringID)
+	{
+		return this.Selectables[stringID];
+	}
+
+	public override IInvokable Invokable(string stringID)
+	{
+		return this.Invokables[stringID];
+	}
+
+	public override IInputable Inputable(string stringID)
+	{
+		return this.Inputables[stringID];
+	}
+
+	public override IReadable Readable(string stringID)
+	{
+		return this.Readables[stringID];
+	}
+	public override IExpandable Expandable(string stringID)
+	{
+		return this.Expandables[stringID];
+	}
+
+}
   
-  	public class HTMLPageFactory : PageFactory
+public class HTMLPageFactory : PageFactory
+{
+	private IWebDriver Driver;
+	public HTMLPageFactory(IWebDriver driver)
 	{
-		private IWebDriver Driver;
-		public HTMLPageFactory(IWebDriver driver)
-		{
-			this.Driver = driver;
-		}
-		public override Page MakePage()
-		{
-			return new HTMLPage(this.Driver);
-		}
-		private IWebElement GetElement(IPageElementID pageElementID)
-		{
-			return this.Driver.FindElement((By)pageElementID.Locator());
-		}
-
-		public override IInvokable CreateInvokable(IPageElementID pageElementID)
-		{
-			return new HTMLInvokable(this.GetElement(pageElementID));
-		}
-
-		public override ISelectable CreateSelectable(IPageElementID pageElementID)
-		{
-			return new HTMLRadioButton(this.Driver.FindElement((By)pageElementID.Locator()));
-		}
-		public override IReadable CreateReadable(IPageElementID pageElementID)
-		{
-			return new HTMLReadable(this.Driver.FindElement((By)pageElementID.Locator()));
-		}
-
-		public override IInputable CreateInputable(IPageElementID pageElementID)
-		{
-			return new HTMLInputable(this.Driver.FindElement((By)pageElementID.Locator()));
-		}
-
-		public override IExpandable CreateExpandable(IPageElementID pageElementID)
-		{
-			return new HTMLExpandable(this.GetElement(pageElementID));
-		}
-
-		public JavaScriptPageElement<T> CreateJavaScriptPageElement<T>(string expression)
-		{
-			return new JavaScriptPageElement<T>(Evaluate<T>(expression));
-		}
-		public T Evaluate<T>(string expression)
-		{
-			return OpenQA.Selenium.Support.Extensions.WebDriverExtensions.ExecuteJavaScript<T>(Driver, expression);
-		}
+		this.Driver = driver;
 	}
+	public override Page MakePage()
+	{
+		return new HTMLPage(this.Driver);
+	}
+	private IWebElement GetElement(IPageElementID pageElementID)
+	{
+		return this.Driver.FindElement((By)pageElementID.Locator());
+	}
+
+	public override IInvokable CreateInvokable(IPageElementID pageElementID)
+	{
+		return new HTMLInvokable(this.GetElement(pageElementID));
+	}
+
+	public override ISelectable CreateSelectable(IPageElementID pageElementID)
+	{
+		return new HTMLRadioButton(this.Driver.FindElement((By)pageElementID.Locator()));
+	}
+	public override IReadable CreateReadable(IPageElementID pageElementID)
+	{
+		return new HTMLReadable(this.Driver.FindElement((By)pageElementID.Locator()));
+	}
+
+	public override IInputable CreateInputable(IPageElementID pageElementID)
+	{
+		return new HTMLInputable(this.Driver.FindElement((By)pageElementID.Locator()));
+	}
+
+	public override IExpandable CreateExpandable(IPageElementID pageElementID)
+	{
+		return new HTMLExpandable(this.GetElement(pageElementID));
+	}
+
+	public JavaScriptPageElement<T> CreateJavaScriptPageElement<T>(string expression)
+	{
+		return new JavaScriptPageElement<T>(Evaluate<T>(expression));
+	}
+	public T Evaluate<T>(string expression)
+	{
+		return OpenQA.Selenium.Support.Extensions.WebDriverExtensions.ExecuteJavaScript<T>(Driver, expression);
+	}
+}
 ```  
-  
-  
-  Here is the implementation for DesktopPageFactory and DesktopPage.
-  
-  
+
+
+Here is the implementation for DesktopPageFactory and DesktopPage.
+
+
 ```c#
-  	public class DesktopPageFactory : PageFactory
+public class DesktopPageFactory : PageFactory
+{
+	private UIMap UIMap;
+	public DesktopPageFactory(UIMap uiMap)
 	{
-		private UIMap UIMap;
-		public DesktopPageFactory(UIMap uiMap)
-		{
-			this.UIMap = uiMap;
-		}
-		public override Page MakePage()
-		{
-			return new DesktopPage(this.UIMap);
-		}
-		private AutomationElement GetElement(IPageElementID pageElementID)
-		{
-			return this.UIMap.GetG4Window().Result.FindFirst(TreeScope.Descendants, (Condition)pageElementID.Locator());
-		}
-
-		public override IInvokable CreateInvokable(IPageElementID pageElementID)
-		{
-			return new DesktopInvokable(this.GetElement(pageElementID));
-		}
-
-		public override ISelectable CreateSelectable(IPageElementID pageElementID)
-		{
-			return new DesktopSelectable(this.GetElement(pageElementID));
-		}
-		public override IReadable CreateReadable(IPageElementID pageElementID)
-		{
-			return new DesktopReadable(this.GetElement(pageElementID));
-		}
-
-		public override IInputable CreateInputable(IPageElementID pageElementID)
-		{
-			return new DesktopInputable(this.GetElement(pageElementID));
-		}
-
-		public override IExpandable CreateExpandable(IPageElementID pageElementID)
-		{
-			return new DesktopExpandable(this.GetElement(pageElementID));
-		}
-
-		public ISelectable CreateDesktopCheckbox(IPageElementID pageElementID)
-		{
-			return new DesktopCheckbox(this.GetElement(pageElementID));
-		}
+		this.UIMap = uiMap;
 	}
-  
-  	public class DesktopPage : Page
+	public override Page MakePage()
 	{
-		public UIMap UIMap;
-		public DesktopPage(UIMap uiMap)
-		{
-			this.UIMap = uiMap;
-			this.Invokables = new Dictionary<string, IInvokable>();
-			this.Selectables = new Dictionary<string, ISelectable>();
-			this.Readables = new Dictionary<string, IReadable>();
-			this.Inputables = new Dictionary<string, IInputable>();
-			this.Expandables = new Dictionary<string, IExpandable>();
-		}
-
-		public override ISelectable Selectable(string stringID)
-		{
-			return this.Selectables[stringID];
-		}
-
-		public override IInvokable Invokable(string stringID)
-		{
-			return this.Invokables[stringID];
-		}
-
-		public override IReadable Readable(string stringID)
-		{
-			return this.Readables[stringID];
-		}
-
-		public override IInputable Inputable(string stringID)
-		{
-			return this.Inputables[stringID];
-		}
-
-		public override IExpandable Expandable(string stringID)
-		{
-			return this.Expandables[stringID];
-		}
+		return new DesktopPage(this.UIMap);
+	}
+	private AutomationElement GetElement(IPageElementID pageElementID)
+	{
+		return this.UIMap.GetG4Window().Result.FindFirst(TreeScope.Descendants, (Condition)pageElementID.Locator());
 	}
 
-	public class DesktopPageElementID : IPageElementID
+	public override IInvokable CreateInvokable(IPageElementID pageElementID)
 	{
-		public Condition Value;
-
-		public DesktopPageElementID(Condition _value)
-		{
-			this.Value = _value;
-		}
-
-		public Object Locator()
-		{
-			return this.Value;
-		}
+		return new DesktopInvokable(this.GetElement(pageElementID));
 	}
+
+	public override ISelectable CreateSelectable(IPageElementID pageElementID)
+	{
+		return new DesktopSelectable(this.GetElement(pageElementID));
+	}
+	public override IReadable CreateReadable(IPageElementID pageElementID)
+	{
+		return new DesktopReadable(this.GetElement(pageElementID));
+	}
+
+	public override IInputable CreateInputable(IPageElementID pageElementID)
+	{
+		return new DesktopInputable(this.GetElement(pageElementID));
+	}
+
+	public override IExpandable CreateExpandable(IPageElementID pageElementID)
+	{
+		return new DesktopExpandable(this.GetElement(pageElementID));
+	}
+
+	public ISelectable CreateDesktopCheckbox(IPageElementID pageElementID)
+	{
+		return new DesktopCheckbox(this.GetElement(pageElementID));
+	}
+}
+
+public class DesktopPage : Page
+{
+	public UIMap UIMap;
+	public DesktopPage(UIMap uiMap)
+	{
+		this.UIMap = uiMap;
+		this.Invokables = new Dictionary<string, IInvokable>();
+		this.Selectables = new Dictionary<string, ISelectable>();
+		this.Readables = new Dictionary<string, IReadable>();
+		this.Inputables = new Dictionary<string, IInputable>();
+		this.Expandables = new Dictionary<string, IExpandable>();
+	}
+
+	public override ISelectable Selectable(string stringID)
+	{
+		return this.Selectables[stringID];
+	}
+
+	public override IInvokable Invokable(string stringID)
+	{
+		return this.Invokables[stringID];
+	}
+
+	public override IReadable Readable(string stringID)
+	{
+		return this.Readables[stringID];
+	}
+
+	public override IInputable Inputable(string stringID)
+	{
+		return this.Inputables[stringID];
+	}
+
+	public override IExpandable Expandable(string stringID)
+	{
+		return this.Expandables[stringID];
+	}
+}
+
+public class DesktopPageElementID : IPageElementID
+{
+	public Condition Value;
+
+	public DesktopPageElementID(Condition _value)
+	{
+		this.Value = _value;
+	}
+
+	public Object Locator()
+	{
+		return this.Value;
+	}
+}
 ```
 
 The two definitions for the Page subclasses are very similar.  The only difference is that DesktopPage has a member of type UIMap, 
@@ -279,7 +279,7 @@ public Page OKButtonPage()
   Page page = new factoryMakePage();
   page.Invokables.Add("OKButton", factory.CreateInvokable(new HTMLPageElement(By.Id("OK"));
   return page;
-
+}
 
 ```
 
