@@ -1,6 +1,5 @@
 ---
-title: 
-Mapping Configurations to Application Behavior
+title: Mapping Configurations to Application Behavior
 date: 2018-07-07
 category: automation
 ---
