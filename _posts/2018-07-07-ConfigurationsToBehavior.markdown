@@ -20,3 +20,18 @@ Here is a diagram of the generalized state machine below:
 
 ![Generalized State Machine]({{site.baseurl}}{{site.images.GeneralizedStateMachine}})
 
+
+When the configuration is manual, the transition symbols in the state machine will be assigned the following values:
+
+```
+  a := RUN
+  b := PAUSE
+  c := RUN
+  d := STOP
+  e := RUN
+  g := NULL
+  f := STOP
+```
+
+![Generalized State Machine]({{site.baseurl}}{{site.images.ManualStateMachine}})
+
