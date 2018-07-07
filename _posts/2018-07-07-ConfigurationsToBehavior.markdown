@@ -33,5 +33,21 @@ When the configuration is manual, the transition symbols in the state machine wi
   f := STOP
 ```
 
-![Generalized State Machine]({{site.baseurl}}{{site.images.ManualStateMachine}})
+![Manual State Machine]({{site.baseurl}}{{site.images.ManualStateMachine}})
 
+
+When the configuration is set to Auto-Store, the user also sets the time interval at which the meter should store its measurement. To handle this in the model, the notation λ(t) will be used, where t is the number of seconds in the specified interval. The symbol ɛ is the epsilon transition, where the state machine will spontaneously make the transition without needing any input.
+
+The values below will be assigned to the variables for Auto-Store:
+
+```
+  a := ɛ
+  b := PAUSE
+  c := RUN
+  d := STOP
+  e := RUN
+  g := λ(t)
+  f := STOP
+```
+
+![Auto-Store State Machine]({{site.baseurl}}{{site.images.AutoStoreStateMachine}})
