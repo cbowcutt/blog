@@ -18,6 +18,5 @@ Although there are different configurations, the meter will always be in one of 
 Here is a diagram of the generalized state machine below:
 
 
-![alt text][GeneralizedStateMachine]
+![alt text][{{site.url}}{{site.images.GeneralizedStateMachine}}]
 
-GeneralizedStateMachine: {{site.url + site.images.GeneralizedStateMachine}}
