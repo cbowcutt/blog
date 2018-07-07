@@ -24,3 +24,8 @@ author:
   
 sass:
   sass_dir: _sass
+  
+images:
+  GeneralizedStateMachine : "/assets/images/GeneralizedStateMachine.png"
+  ManualStateMachine      : "/assets/images/ManualStateMachine.png"
+  AutoStoreStateMachine   : "/assets/images/AutoStoreStateMachine.png"
