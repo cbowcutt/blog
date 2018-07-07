@@ -20,4 +20,4 @@ Here is a diagram of the generalized state machine below:
 
 ![alt text][GeneralizedStateMachine]
 
-GeneralizedStateMachine: {{site.images.GeneralizedStateMachine}}
+GeneralizedStateMachine: {{site.url + site.images.GeneralizedStateMachine}}
