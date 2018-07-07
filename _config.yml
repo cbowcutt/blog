@@ -2,8 +2,8 @@ remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "mint"
 title: Christopher Bowcutt's Blog
 
-url: "cbowcutt.github.io"
-
+url: "/cbowcutt.github.io"
+baseurl: "/cbowcutt.github.io"
 defaults:
   # _posts
   - scope:
