@@ -35,13 +35,13 @@ images:
 plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
-    - jekyll-paginate
+  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jemoji
   
-  whitelist: 
+whitelist: 
   - jekyll-feed
   - jekyll-sitemap # minimal-mistakes
   - jekyll-include-cache # minimal-mistakes
