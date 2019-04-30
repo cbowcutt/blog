@@ -40,3 +40,11 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jemoji
+  
+  whitelist: 
+  - jekyll-feed
+  - jekyll-sitemap # minimal-mistakes
+  - jekyll-include-cache # minimal-mistakes
+  - jekyll-paginate # minimal-mistakes
+  - jekyll-gist # minimal-mistakes
+  - jekyll-remote-theme
