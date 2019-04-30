@@ -47,5 +47,3 @@ whitelist:
   - jekyll-paginate # minimal-mistakes
   - jekyll-gist # minimal-mistakes
   - jekyll-remote-theme
-
-theme: jekyll-theme-midnight
