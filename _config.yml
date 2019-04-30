@@ -48,4 +48,4 @@ whitelist:
   - jekyll-gist # minimal-mistakes
   - jekyll-remote-theme
 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
