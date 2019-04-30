@@ -31,3 +31,6 @@ images:
   GeneralizedStateMachine : "/assets/images/GeneralizedStateMachine.png"
   ManualStateMachine      : "/assets/images/ManualStateMachine.png"
   AutoStoreStateMachine   : "/assets/images/AutoStoreStateMachine.png"
+  
+plugins:
+  - jekyll-include-cache
